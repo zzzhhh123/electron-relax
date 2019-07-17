@@ -1,13 +1,23 @@
 {
-  "name": "electron-quick-start",
+  "name": "electron-relax",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Live long and prosper",
   "main": "./libs/app.js",
+  "build": {
+    "appId": "com.relax.app",
+    "mac": {
+      "target": ["dmg","zip"]
+    },
+    "win": {
+      "target": ["nsis","zip"]
+    }
+  },
   "scripts": {
     "start": "electron .",
     "dev": "gulp dev",
     "watch": "gulp watch",
-    "build": "gulp build"
+    "build": "gulp build",
+    "pack:win": "electron-builder --win --x64"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -29,6 +39,7 @@
     "babel-loader": "^8.0.0",
     "electron": "^5.0.6",
     "electron-connect": "^0.6.3",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-cssmin": "^0.2.0",
@@ -40,7 +51,6 @@
     "gulp-watch": "^5.0.1"
   },
   "dependencies": {
-    "gulp": "^4.0.2",
     "swig-templates": "^2.0.3"
   }
 }

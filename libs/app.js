@@ -5,9 +5,8 @@ var _require = require('electron'),
     app = _require.app,
     BrowserWindow = _require.BrowserWindow;
 
-var path = require('path');
+var path = require('path'); // const client = require('electron-connect').client;
 
-var client = require('electron-connect').client;
 
 var templateRender = require('./swig/core.js');
 
@@ -29,8 +28,8 @@ function createWindow() {
   }); // and load the index.html of the app.
 
   mainWindow.loadFile(BASE_ROOT); // Open the DevTools.
+  // mainWindow.webContents.openDevTools();
 
-  mainWindow.webContents.openDevTools();
   mainWindow.webContents.on('will-navigate', function (e, url) {
     var renderPath = decodeURIComponent(url);
     var templatePath = renderPath.replace(/\/views/g, '/templates');
@@ -44,8 +43,7 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
-  });
-  client.create(mainWindow);
+  }); // client.create(mainWindow);
 } // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
