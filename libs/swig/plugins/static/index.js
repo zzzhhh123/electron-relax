@@ -5,7 +5,7 @@ var staticTag = require('./tag-static');
 var path = require('path'); // eslint-disable-next-line no-magic-numbers
 
 
-var staticURL = path.resolve(__dirname, '../../../../dist');
+var staticURL = path.resolve(__dirname, '../../../../assets');
 
 module.exports = function (swig) {
   swig.setExtension('static', function (input) {

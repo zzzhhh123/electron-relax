@@ -37,14 +37,14 @@ function buildCSS() {
         }))
         .pipe(sass().on('error', sass.logError))
         .pipe(cssmin())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('assets'));
 }
 
 function buildJS() {
     return gulp.src(JS_PATH + '/**/*.js', { base: PUBLIC_PATH })
         .pipe(babel())
         .pipe(uglify())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('assets'));
 }
 
 function buildSRC() {
@@ -58,7 +58,7 @@ function buildSRC() {
 
 
 function judgeDir(uri) {
-    if (!fs.existsSync(path.resolve(__dirname, './views'))) {
+    if (!fs.existsSync(path.resolve(__dirname, './views' + (uri ? '/' + uri : '')))) {
         return fs.mkdirSync(path.resolve(__dirname, './views' + (uri ? '/' + uri : '')));
     }
 }
@@ -83,7 +83,7 @@ function buildHTML() {
 
 function buildIMG() {
     return gulp.src(IMAGE_PATH + '/**/*.*', { base: PUBLIC_PATH })
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('assets'));
 }
 
 function webReload(path, callback) {
@@ -98,7 +98,7 @@ gulp.task('clean', function () {
         read: false,
         allowEmpty: true
     };
-    return gulp.src(['./libs', './dist', './views'], opts)
+    return gulp.src(['./libs', './assets', './views'], opts)
         .pipe(clean());
 });
 

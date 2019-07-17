@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
-const client = require('electron-connect').client;
+// const client = require('electron-connect').client;
 const templateRender = require('./swig/core.js');
 
 const BASE_TEMPLATE = path.resolve(__dirname, '../templates/index.html');
@@ -26,7 +26,7 @@ function createWindow () {
   mainWindow.loadFile(BASE_ROOT);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.webContents.on('will-navigate', function (e, url) {
     let renderPath = decodeURIComponent(url);
@@ -42,7 +42,7 @@ function createWindow () {
     mainWindow = null
   });
 
-  client.create(mainWindow);
+  // client.create(mainWindow);
 }
 
 // This method will be called when Electron has finished
